@@ -1,8 +1,6 @@
 -- This module has definitions for many "number" functions
 -- we've talked about in class.
 
-import qualified Data.Set as Set
-
 -- returns x^n mod m
 fastPower :: Int -> Int -> Int -> Int
 fastPower m x 0 = 1
@@ -11,13 +9,13 @@ fastPower m x n
     | even n = fastPower m ((x * x) `mod` m) (n `div` 2)
     | otherwise = (x * (fastPower m ((x * x) `mod` m) ((n - 1) `div` 2))) `mod` m
 
--- list of {x^0 mod m, x^1 mod m, ..., x^(m-2) mod m}
-powers :: Int -> Int -> Set.Set Int
-powers m x = Set.fromList $ map (fastPower m x) [0..m-2]
+-- list of [x^1 mod m, x^2 mod m, ..., x^(m-1) mod m]
+powers :: Int -> Int -> [Int]
+powers m x = take (m-1) $ iterate (\n -> (n*x) `mod` m) x
 
 -- true if x is a generator of F_m
 generator :: Int -> Int -> Bool
-generator m x = (powers m x) == (Set.fromList [1..m-1])
+generator m x = all (1/=) (init $ powers m x)
 
 -- list of the generators of m
 generators :: Int -> [Int]
