@@ -8,7 +8,7 @@ There are three main ways you can use SageMath:
 3. Use SageMathCell at <https://sagecell.sagemath.org/>
 
 **Notes:**  
-* If you download SageMath, I **highly** recommend that you also install Anaconda with Python 3.7 available for free at https://www.anaconda.com/distribution/ as this will allow you to produce high quality Jupyter notebooks using SageMath
+* If you download SageMath, I **highly** recommend that you also install Anaconda with Python 3.7 available for free at <https://www.anaconda.com/distribution/> as this will allow you to produce high quality Jupyter notebooks using SageMath
 * If you have a Mac and download SageMath, you may have trouble opening the .dmg file so check the FAQ section 
 * SageMathCell is only for short code snippets that are a few lines long so if you want to write larger scripts, you should either download SageMath or use CoCalc
 
