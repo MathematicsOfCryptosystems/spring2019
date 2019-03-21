@@ -1,5 +1,7 @@
 -- This module has definitions for many "number" functions
 -- we've talked about in class.
+import Data.List (elemIndex)
+import Data.Maybe (fromJust)
 
 -- returns x^n mod m
 fastPower :: Int -> Int -> Int -> Int
@@ -32,6 +34,13 @@ divisors n = [x | x <- [1..n], x `divides` n]
 -- true if p is prime
 prime :: Int -> Bool
 prime p = (divisors p) == [1, p]
+
+-- discrete logarithm of y base g modulo m
+discreteLog :: Int -> Int -> Int -> Int
+-- note that powers lists [g^1, g^2, ...], so the index of g^1 is 0
+-- if we prepend 1 to the list, then the index of g^1 is 1, so the 
+-- index in the new list is the discrete logarithm
+discreteLog m g y = fromJust $ elemIndex y $ 1 : powers m g
 
 -- infinite list of primes
 primes = [x | x <- [2..], prime x]
